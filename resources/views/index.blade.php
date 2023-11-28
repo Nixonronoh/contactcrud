@@ -15,10 +15,15 @@
             <th>PhoneNumber</th>
         </tr>
         @foreach ($contacts as $contact)
+    
             <tr>
                 <td>{{$contact->FirstName}}</td>
                 <td>{{$contact->LastName}}</td>
                 <td>{{$contact->PhoneNumber}}</td>
+                <td>
+                    <a href="/{{$contact->id }}/edit">
+                        edit</a>
+                </td>
             </tr>
         @endforeach
     </table>

@@ -54,7 +54,9 @@ class ContactController extends Controller
      */
     public function edit(string $id)
     {
-        return view('/.edit')
+    
+
+    return view('contacts/edit');
     }
 
     /**
