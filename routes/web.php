@@ -18,4 +18,4 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 })*/
 
-Route::resource('/', ContactController::class);
+Route::resource('contacts', ContactController::class);

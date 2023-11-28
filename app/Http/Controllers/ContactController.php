@@ -39,6 +39,7 @@ class ContactController extends Controller
             'LastName' =>$request->input('LastName'),
             'PhoneNumber' =>$request->input('PhoneNumber')
         ]);
+        print_r($contact);
     }
 
     /**
@@ -64,7 +65,25 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try{
+            $contact = Contact::find($id);
+            $contact->update($request->all());
+            $response = [
+                'success' => true,
+                'message' => 'Resource updated!'
+            ];
+        }catch (Exception $exception){
+            $response = [
+                'success' => false,
+                'message' => $exception->getMessage()
+            ];
+        }catch(Throwable $throwable){
+            $response = [
+                'success' => false,
+                'message' => $throwable->getMessage()
+            ];
+        }
+        return response()->json($response);
     }
 
     /**
@@ -72,6 +91,25 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            $contact= Contact::find($id);
+            $contact->delete();
+            $response = [
+                'success' => true,
+                'message' => 'Resource deleted!'
+            ];
+        }catch (Exception $exception){
+            $response = [
+                'success' => false,
+                'message' => $exception->getMessage()
+            ];
+        }catch(Throwable $throwable){
+            $response = [
+                'success' => false,
+                'message' => $throwable->getMessage()
+            ];
+        }
+        return response()->json($response);
+    }
     }
 }

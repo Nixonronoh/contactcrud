@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>All Contacts Here</h1>
+    <h1>Contact List</h1>
     <table border="1">
         <tr>
             <th>FirstName</th>
@@ -22,8 +22,12 @@
                 <td>{{$contact->PhoneNumber}}</td>
                 <td>
                     <a href="/{{$contact->id }}/edit">
-                        edit</a>
+                        edit </a>
                 </td>
+            
+                    
+                    
+                  
             </tr>
         @endforeach
     </table>

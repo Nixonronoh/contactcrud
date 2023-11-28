@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>New Contact Are Created Here</h1>
+    <h1> Created New Contacts</h1>
     <form action="/" method="post">
         @csrf
         <div>
