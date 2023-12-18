@@ -27,6 +27,7 @@ class ContactController extends Controller
     public function create()
     {
         return view('/create',);
+        return redirect('/contacts');
     }
 
     /**
@@ -34,82 +35,54 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $contact = Contact::create([
+             Contact::create([
             'FirstName' =>$request->input('FirstName'),
             'LastName' =>$request->input('LastName'),
             'PhoneNumber' =>$request->input('PhoneNumber')
         ]);
-        print_r($contact);
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Contact $contact)
     {
-        //
+    dd($contact);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Contact $contact)
     {
-    
-
-    return view('contacts/edit');
+        dd($contact);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(string $id)
     {
-        try{
-            $contact = Contact::find($id);
-            $contact->update($request->all());
-            $response = [
-                'success' => true,
-                'message' => 'Resource updated!'
-            ];
-        }catch (Exception $exception){
-            $response = [
-                'success' => false,
-                'message' => $exception->getMessage()
-            ];
-        }catch(Throwable $throwable){
-            $response = [
-                'success' => false,
-                'message' => $throwable->getMessage()
-            ];
-        }
-        return response()->json($response);
+    //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Contact $contact)
     {
-        try{
-            $contact= Contact::find($id);
-            $contact->delete();
-            $response = [
-                'success' => true,
-                'message' => 'Resource deleted!'
-            ];
-        }catch (Exception $exception){
-            $response = [
-                'success' => false,
-                'message' => $exception->getMessage()
-            ];
-        }catch(Throwable $throwable){
-            $response = [
-                'success' => false,
-                'message' => $throwable->getMessage()
-            ];
-        }
-        return response()->json($response);
+        dd($contact);
+
+        //$contact->delete();
+        return redirect('/contacts');
+
+    }
+    public function search($FirstName)
+    {
+       return Contact::where('FirstName', 'like', '%' .$FirstName. '%' )->get();
+         dd($FirstName);
+       
     }
     }
-}
+

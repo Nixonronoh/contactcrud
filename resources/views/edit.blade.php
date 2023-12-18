@@ -7,23 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Created New Contacts</h1>
-    
-    <form action="/contacts" method="post">
+    <h1> Edit Contacts here</h1>
+    <form action="" method="post">
         @csrf
         <div>
             <label for="FirstName"></label>
-        <input type="text" name="FirstName" placeholder="FirstName">
+        <input type="text" name="FirstName" placeholder="FirstName" value="{{$contact->FirstName}}">
         </div>
 
         <div>
             <label for="LastName"></label>
-        <input type="text" name="LastName" placeholder="LastName">
+        <input type="text" name="LastName" placeholder="LastName" value="{{$contact->LastName }}">
         </div>
 
         <div>
             <label for="PhoneNumber"></label>
-        <input type="text" name="PhoneNumber" placeholder="PhoneNumber">
+        <input type="text" name="PhoneNumber" placeholder="PhoneNumber" value="{{$contact->PnoneNumber}}">
         </div>
         <div>
             <input type="submit" value="Save">

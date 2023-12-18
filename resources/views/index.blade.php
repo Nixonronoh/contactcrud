@@ -8,8 +8,12 @@
 </head>
 <body>
     <h1>Contact List</h1>
+    <a href="/contacts/create">New Contact</a>
+
     <table border="1">
         <tr>
+            <th>id</th>
+
             <th>FirstName</th>
             <th>LastName</th>
             <th>PhoneNumber</th>
@@ -17,12 +21,28 @@
         @foreach ($contacts as $contact)
     
             <tr>
+                <td>{{$contact->id}}</td>
+
                 <td>{{$contact->FirstName}}</td>
                 <td>{{$contact->LastName}}</td>
                 <td>{{$contact->PhoneNumber}}</td>
                 <td>
-                    <a href="/{{$contact->id }}/edit">
-                        edit </a>
+                    
+                    <a href="{{route('contacts.edit', ['contact'=>$contact] )}}">
+                        Edit
+                    </a>
+                    
+                     
+                </td>
+                <td> 
+                    <a href="/contacts"></a>
+                      <form
+                    action="{{route('contacts.destroy', ['contact'=>$contact])}}" method="post">
+                       @csrf
+                       @method('delete')
+                       <button type="submit" >Delete</button>
+
+                   </form>
                 </td>
             
                     
